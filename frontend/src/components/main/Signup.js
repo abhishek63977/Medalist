@@ -1,6 +1,55 @@
+import { useFormik } from "formik"
 import React from 'react'
+import * as Yup from 'yup';
 
 const Signup = () => {
+  const SignupSchema = Yup.object().shape({
+    name: Yup.string()
+      .min(2, 'Too Short!')
+      .max(10, 'Too Long!')
+      .required('Required'),
+    email: Yup.string().email('Invalid email').required('Required'),
+    password: Yup
+    .string()
+    .required('Please Enter your password')
+    .matches(
+      /^(?=.[a-z])(?=.[A-Z])(?=.[0-9])(?=.[!@#\$%\^&\*])(?=.{8,})/,
+      "Must Contain 8 Characters, One Uppercase, One Lowercase, One Number and One Special Case Character"
+    )
+  });
+
+    const signupForm = useFormik({
+        initialValues: {
+            name : '',
+            email : '',
+            password : '',
+            cPassword : ''
+        },
+        onSubmit : async (values) => { 
+          console.log( values );
+          // making request to backend
+          // 1. address url
+          // 2. request method
+          // 3. Data
+          // 4. Data Format to be sent
+
+          const res = await fetch('http://localhost:3000/user/add', {
+            method: 'POST',
+            body: JSON.stringify(values),
+            headers: {
+              'Content-Type' : 'application/json'
+            }
+          });
+
+          console.log(res.status);
+          console.log(await res.text());
+
+          console.log('Form Submitted');
+
+
+        },
+        validationSchema : SignupSchema
+    });
   return (
     
       <>
@@ -19,19 +68,16 @@ const Signup = () => {
             className="my-5 display-5 fw-bold ls-tight"
             style={{ color: "hsl(218, 81%, 95%)" }}
           >
-            The best offer <br />
+            {/* The best offer <br /> */}
             <span style={{ color: "hsl(218, 81%, 75%)" }}>
-              for your business
+              {/* for your business */}
             </span>
           </h1>
           <p
             className="mb-4 opacity-70"
             style={{ color: "hsl(218, 81%, 85%)" }}
           >
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-            Temporibus, expedita iusto veniam atque, magni tempora mollitia
-            dolorum consequatur nulla, neque debitis eos reprehenderit quasi ab
-            ipsum nisi dolorem modi. Quos?
+           <img src="https://img.freepik.com/free-vector/sport-equipment-concept_1284-13034.jpg?w=360" alt="" />  
           </p>
         </div>
         <div className="col-lg-6 mb-5 mb-lg-0 position-relative">

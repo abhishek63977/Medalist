@@ -8,6 +8,9 @@ import Login from './components/main/Login';
 import Signup from './components/main/Signup';
 import User from './components/user';
 import ManageTournament from './components/user/ManageTournament';
+import ManageTeams from './components/user/ManageTeams';
+import ManagePlayers from './components/user/ManagePlayers';
+import ManageCategories from './components/user/ManageCategories';
 
 function App() {
   return (
@@ -23,6 +26,9 @@ function App() {
           </Route>
           <Route path="user" element={<User />}>
             <Route path='managetournament' element={<ManageTournament />} />
+            <Route path='manageteams' element={<ManageTeams />} />
+            <Route path='manageplayers' element={<ManagePlayers />} />
+            <Route path='managecategories' element={<ManageCategories />} />
           </Route>
         </Routes>
       </BrowserRouter>
