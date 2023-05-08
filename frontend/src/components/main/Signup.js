@@ -77,7 +77,7 @@ const Signup = () => {
             className="mb-4 opacity-70"
             style={{ color: "hsl(218, 81%, 85%)" }}
           >
-           <img src="https://img.freepik.com/free-vector/sport-equipment-concept_1284-13034.jpg?w=360" alt="" />  
+           <img className="img-fluid" src="https://static.vecteezy.com/system/resources/previews/005/093/329/original/most-popular-sport-illustration-free-vector.jpg" alt="" />  
           </p>
         </div>
         <div className="col-lg-6 mb-5 mb-lg-0 position-relative">

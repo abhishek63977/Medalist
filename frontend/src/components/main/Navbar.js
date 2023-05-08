@@ -6,7 +6,7 @@
         <nav className="navbar navbar-expand-lg navbar-light bg-light">
   {/* Container wrapper */}
   <div className="container-fluid">
-    <a class="navbar-brand" href='#'>Navbar</a>
+    <img src="./downloads/winner.png" alt="" />
     {/* Toggle button */}
     <button
       className="navbar-toggler"
