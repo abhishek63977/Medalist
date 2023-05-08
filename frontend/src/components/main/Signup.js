@@ -91,6 +91,9 @@ const Signup = () => {
           />
           <div className="card bg-glass">
             <div className="card-body px-4 py-5 px-md-5">
+
+              <h2 className="text-center">Signup Here</h2>
+
               <form>
                 {/* 2 column grid layout with text inputs for the first and last names */}
                 <div className="row">
