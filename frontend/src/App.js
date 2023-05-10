@@ -29,6 +29,10 @@ function App() {
             <Route path='manageteams' element={<ManageTeams />} />
             <Route path='manageplayers' element={<ManagePlayers />} />
             <Route path='managecategories' element={<ManageCategories />} />
+            <Route path='creatematch' element={<CreateMatch />} />
+            <Route path='managematches' element={<ManageMatches />} />
+            <Route path='manageplayers' element={<ManagePlayers />} />
+            <Route path='managescores' element={<ManageScores />} />
           </Route>
         </Routes>
       </BrowserRouter>
