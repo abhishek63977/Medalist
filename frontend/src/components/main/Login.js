@@ -1,6 +1,43 @@
+import { useFormik } from 'formik';
 import React from 'react'
+import Swal from 'sweetalert2';
+
 
 const Login = () => {
+  const loginForm = useFormik({
+    initialValues: {
+      email: '',
+      password: ''
+    },
+
+    onSubmit: async (values) => {
+      console.log(values);
+
+      const res = await fetch('http://localhost:5000/user/authenticate', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(values)
+      });
+
+      if (res.status === 200) {
+        Swal.fire({
+          icon: 'success',
+          title: 'Success',
+          text: 'Logged in Successfully'
+        })
+      } else if (res.status === 401) {
+        Swal.fire({
+          icon: 'error',
+          title: 'Error',
+          text: 'Invalid Credentials'
+        })
+      }
+    }
+  })
+
+
   return (
     <div>
       <>
@@ -14,20 +51,22 @@ const Login = () => {
                       <div className="card-body p-md-1 mx-md-4">
                         <div className="text-center">
                           <img
-                            src="https://media.istockphoto.com/id/1316563941/vector/medal-and-ribbon-icons-sport-prize-winner-trophy.jpg?s=612x612&w=0&k=20&c=Ta647-uqjMpDWmDBks1RUSj2WPgQQ5n2El5AEgKOiCA="                           style={{ width: 300 }}
+                            src="https://media.istockphoto.com/id/1316563941/vector/medal-and-ribbon-icons-sport-prize-winner-trophy.jpg?s=612x612&w=0&k=20&c=Ta647-uqjMpDWmDBks1RUSj2WPgQQ5n2El5AEgKOiCA=" style={{ width: 300 }}
                             alt="logo"
                           />
                           <h4 className="mt-1 mb-3 pb-1">MEDALIST</h4>
                         </div>
-                        <form>
+                        <form onSubmit={loginForm.handleSubmit}>
                           <p>Please login to your account</p>
                           <label className="form-label" htmlFor="form2Example11">
                             Username
                           </label>
                           <div className=" mb-4">
                             <input
-                              type="email"
-                              id="form2Example11"
+                              type="text"
+                              id="username"
+                              onChange={loginForm.handleChange}
+                              value={loginForm.values.username}
                               className="form-control"
                               placeholder="Phone number or email address"
                             />
@@ -39,7 +78,9 @@ const Login = () => {
                           <div className=" mb-4">
                             <input
                               type="password"
-                              id="form2Example22"
+                              id="password"
+                              onChange={loginForm.handleChange}
+                              value={loginForm.values.password}
                               className="form-control"
                               placeholder='Password'
                             />

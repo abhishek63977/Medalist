@@ -4,7 +4,7 @@ import app_config from "../../config";
 import CreateMatch from "./CreateMatch";
 import ManagePlayer from "./ManagePlayer";
 import ManageMatches from "./ManageMatches";
-import ManageScores from "./ManageScores";
+import ManageScores from "./ManageScore";
 import ManageCategories from "./ManageCategories";
 import ManageTeam from "./ManageTeams";
 

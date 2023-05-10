@@ -1,8 +1,12 @@
 import { useFormik } from "formik"
 import React from 'react'
+import { useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 import * as Yup from 'yup';
 
 const Signup = () => {
+  const navigate = useNavigate();
+
   const SignupSchema = Yup.object().shape({
     name: Yup.string()
       .min(2, 'Too Short!')

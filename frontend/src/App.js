@@ -11,6 +11,9 @@ import ManageTournament from './components/user/ManageTournament';
 import ManageTeams from './components/user/ManageTeams';
 import ManagePlayers from './components/user/ManagePlayers';
 import ManageCategories from './components/user/ManageCategories';
+import CreateMatch from './components/user/CreateMatch';
+import ManageMatches from './components/user/ManageMatches';
+import ManageScores from './components/user/ManageScore';
 
 function App() {
   return (
